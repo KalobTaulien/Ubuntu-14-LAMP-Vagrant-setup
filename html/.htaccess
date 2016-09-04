@@ -1,0 +1,21 @@
+# Set default index page as index.php
+DirectoryIndex index.php
+
+# Rewrite engine is on 
+RewriteEngine on
+
+# Missing page and 500 (internal error) page 
+ErrorDocument 404 /404.php
+ErrorDocument 500 /500.php
+
+<IfModule mod_rewrite.c>
+
+	# Home page example. Can have trailing slashes, or not, both work.
+	RewriteRule ^(home)/?$ 									index.php [QSA,NC,L]
+	
+	# Example vanity URL's
+	# Example url: localhost:1234/first_name/last_name
+	# RewriteRule ^([a-z0-9_-]+)/([a-z0-9_\-]+)/?$ 			index.php?first_name=$1&last_name=$2 [QSA,NC,L]
+	# RewriteRule ^([a-z0-9_-]+)/?$ 						index.php?first_name=$1 [QSA,NC,L]
+
+</IfModule>
